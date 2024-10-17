@@ -6,6 +6,7 @@ public class WeatherResponse {
     private Main main;
     private List<Weather> weather;
     private String name;
+    private Wind wind;
 
     public Main getMain() {
         return main;
@@ -29,6 +30,14 @@ public class WeatherResponse {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Wind getWind() {
+        return wind;
+    }
+
+    public void setWind(Wind wind) {
+        this.wind = wind;
     }
 
     public static class Main {
@@ -61,6 +70,27 @@ public class WeatherResponse {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+    }
+
+    public static class Wind {
+        private float speed;
+        private int degree;
+
+        public float getSpeed() {
+            return speed;
+        }
+
+        public void setSpeed(float speed) {
+            this.speed = speed;
+        }
+
+        public int getDegree() {
+            return degree;
+        }
+
+        public void setDegree(int degree) {
+            this.degree = degree;
         }
     }
 }

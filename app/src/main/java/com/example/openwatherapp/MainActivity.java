@@ -1,11 +1,13 @@
 package com.example.openwatherapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,33 +17,28 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String API_KEY = "945eade533577498c1645b72a3a7b104";
 
-    private EditText cityEditText;
     private TextView cityTextView, tempTextView, descTextView;
-    private Button searchButton;
+    private Button seeCitiesButton;  // Nouveau bouton pour voir d'autres villes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cityEditText = findViewById(R.id.cityEditText);
+        // Initialisation des éléments de l'UI
         cityTextView = findViewById(R.id.cityTextView);
         tempTextView = findViewById(R.id.tempTextView);
         descTextView = findViewById(R.id.descTextView);
-        searchButton = findViewById(R.id.searchButton);
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String cityName = cityEditText.getText().toString().trim();
-
-                if (!cityName.isEmpty()) {
-                    fetchWeatherData(cityName);  // Appel API avec le nom de ville saisi
-                } else {
-                    Toast.makeText(MainActivity.this, "Please enter a city name", Toast.LENGTH_SHORT).show();
-                }
-            }
+        // Initialiser le bouton pour rediriger vers les autres villes
+        seeCitiesButton = findViewById(R.id.seeCitiesButton);
+        seeCitiesButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CityListActivity.class);
+            startActivity(intent);
         });
+
+        // Appeler la météo pour Paris par défaut
+        fetchWeatherData("Paris");
     }
 
     private void fetchWeatherData(String cityName) {
