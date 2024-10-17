@@ -40,6 +40,7 @@ public class WeatherResponse {
         this.wind = wind;
     }
 
+
     public static class Main {
         private float temp;
         private int humidity;

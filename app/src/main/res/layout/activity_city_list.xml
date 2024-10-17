@@ -7,5 +7,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weatherRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/addCityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter une ville"
+        android:layout_marginTop="16dp"
+        android:padding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/input_rounded_10"
+        android:layout_gravity="center" />
+
 </LinearLayout>
